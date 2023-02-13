@@ -1,0 +1,239 @@
+---
+title: "Project proposal"
+author: "AH"
+output: pdf_document
+---
+
+```{r load-packages, message = FALSE}
+library(knitr)
+library(tidyverse)
+library(broom)
+library(htmltools)
+```
+
+```{r setup, include = FALSE}
+opts_chunk$set(echo = FALSE)
+```
+
+
+## 1. Introduction
+
+Tallia's research about the development of children at risk was done over many years and is one of the first and only observations that were done in this way, as in observing the changes a person at risk goes through at significant stages in his life.
+The stages include the boarding school, the army/national service and the young adulthood.
+This gives us the ability to discern the progress the teenager makes along the way.
+
+Our research question is:
+"Is there a relation and how does the emotional openness level and the will to receive external help through the years (across the multiple meetings) on the scale of development/personal advancement of the teenager (the child at risk) in life?".
+
+Our main goal is to make an evaluation of the emotional openness level and the will to receive external help and as a result we can make a prediction to a certain extent of the status in general of the child at risk in his young adulthood.
+
+Children at risk are a population that has it tougher than most of the general child population.
+The general problem area is to find ways to help the said population so that they may have an equal footing with the rest of the population.
+The specific problem we are trying to solve is to make rooted methods to improve their chances of having an adult life that most other children would be able to easily obtain. (rooted methods refer to methods that can be passed to children at a young age).
+
+Our research question is partially based on the emotional openness of a human. This kind of attribute is difficult to diagnose and define which makes the analysis itself hard as a result.
+The aforementioned research is one of a kind in the way it was an observation that was carried through multiple years. Hence, the thoroughness of our analysis would be unparalleled compared to other past similar research questions, as well as the emotional openness is a niche variable to work with in relation to the relevant kind of data.
+
+Our approach is to specifically rely on the score of the emotional openness and the will to receive external help that we will define using certain questions the children answered in the questionnaire. Depending on the result of our research, it might be advised to work on improving the emotional openness of children at risk and/or encouraging them to seek help in multiple forms from an early age.
+
+## 2. Data
+The data contains questions for youth villages and boarding school residents.
+The data is divided into 3 questionnaires which will be elaborated next:
+In the first questionnaire there are questions that:
+Identify the youth, inquire about the relationships between the youth and his family as well as the staff in the establishment, ask about the practical life skills he obtained in the establishment, survey his willingness to receive help from a specialized staff member, ask about his future prospects.
+In the second questionnaire there are questions that:
+Ask about their current status and their plan for the near future in terms of academic studies, ask about the support of their social environment, ask them if they would seek help from the establishment they came from, ask about their social and general life skills now and in the future.
+In the third questionnaire there are questions that:
+ask about their current life status and their satisfaction of it, ask about their past traumas and the therapies they have been through in their life, probe on the renewal of relationships with the establishments staff members and the relation's affects on their life, ask them for self evaluation and their future hopes and plans.
+
+## 3. Preliminary results
+```{r loading}
+data12 <- haven::read_sav('C:/Users/user/Downloads/Final_Project/proj/data/child_risk_t12.sav')
+data3 <- haven::read_sav('C:/Users/user/Downloads/Final_Project/proj/data/3rd assessment.sav')
+```
+
+```{r selection}
+relevnt_cols <- c('serial_number', 'ParentMeet', 'ParentPhone', 'FamilyTrust', 'FamilSupp', 'Mentor', 'MentorFreq', 'FormalMentor', 'PnimiaTrust', 'PnimiaSupp', 'HelpSeekInten1', 'HelpSeekInten2', 'V34', 'SenseCont1', 'SenseCont2', 'SenseCont3', 'SenseCont4', 'SenseCont5', 'SenseCont6', 'B.SUPPORT_1', 'B.SUPPORT_2', 'B.SUPPORT_3', 'B.SUPPORT_4', 'B.SUPPORT_5', 'B.SUPPORT_6', 'B.CONTACT.DURATION', 'B.HELP.MENTAL', 'B.HELP.MENTAL.DEGREE', 'B.HELP.RELATIONS', 'B.HELP.RELATIONS.DEGREE', 'B.HELP.NONPROFIT', 'B.HELP.NONPROFIT.DEGREE', 'B.MAIN.OCCUPATION_1', 'B.MAIN.OCCUPATION_8', 'B.MAIN.OCCUPATION_9', 'B.LONELY_1', 'B.LONELY_2', 'B.LONELY_3', 'B.LONELY_4', 'B.INTERNET.SUPPORT_3', 'B.INTERNET.SUPPORT_4', 'T3_SRH', 'T3job_no', 'T3A8.wp.160', 'T3T314.10', 'T3Adverse_Events_1', 'T3Adverse_Events_2', 'T3Adverse_Events_3', 'T3Adverse_Events_4', 'T3Adverse_Events_5', 'T3Adverse_Events_6', 'T3Adverse_Events_7', 'T3Adverse_Events_8', 'T3Adverse_Events_9', 'T3Adverse_Events_10', 'T3_ACE_1', 'T3_ACE_2', 'T3_ACE_3', 'T3_ACE_4', 'T3_ACE_5', 'T3_ACE_6', 'T3_ACE_7', 'T3_ACE_8', 'T3_ACE_9', 'T3housing_status', 'T3army_fullservice', 'T3civil_service', 'T3civilserv_full', 'T3helpneeded_1', 'T3helpneeded_2', 'T3helpneeded_3', 'T3helpneeded_4', 'T3helpneeded_5', 'T3helpneeded_6', 'T3helpneeded_7', 'T3helpneeded_8', 'T3helpneeded_9', 'T3_10.20', 'T3_10.120', 'T3_10.460_1', 'T3_10.460_2', 'T3_10.460_3', 'T3_10.460_4', 'T3_socialsupport_1', 'T3_socialsupport_2', 'T3_socialsupport_3', 'T3_socialsupport_4', 'T3_socialsupport_5', 'T3_socialsupport_6', 'T3_14.80', 'T3_life_satisfaction_1', 'T3_life_satisfaction_2', 'T3_life_satisfaction_3', 'T3_life_satisfaction_4', 'T3_life_satisfaction_5', 'T3_life_satisfaction_6', 'T3_life_satisfaction_7', 'T3_skills_1', 'T3_skills_2', 'T3_skills_3', 'T3_skills_4', 'T3_skills_5', 'T3_skills_6', 'T3_skills_7', 'T3_skills_8', 'T3_skills_9', 'T3_skills_10', 'T3_skills_11', 'T3_skills_12', 'T3_skills_13', 'T3_skills_14', 'T3_skills_15', 'T3_skills_16')
+
+flip_scale <- function(df, col_name) {
+  flip_factor <- max(df[col_name], na.rm = TRUE) + 1
+  for (row in seq_len(nrow(df))) {
+    if (is.na(df[row, col_name])) { next }
+    df[row, col_name] <- flip_factor - ifelse(df[row, col_name] >= 1,
+                                               round(df[row, col_name]), 1)
+  }
+  return(df)
+}
+flip_list <- c('ParentMeet', 'ParentPhone', 'T3_SRH', 'T3_14.80', 'T3_10.20',
+               'T3army_fullservice', 'T3civilserv_full')
+```
+
+```{r merging}
+data3$T3interviewee_number <- as.numeric(data3$T3interviewee_number)
+
+coalesce_by_column <- function(df) {
+  return(coalesce(!!!as.list(df)))
+}
+test_data3 <- data3 %>%
+  group_by(T3interviewee_number)
+sum_df <- summarise_all(test_data3, coalesce_by_column)
+```
+
+
+```{r cleaning}
+test_df <- sum_df
+test_df$T3job_no <- suppressWarnings(as.numeric(test_df$T3job_no))
+test_df <- test_df %>% rename(serial_number = T3interviewee_number)
+df123 <- test_df %>%
+  merge(data12, by = "serial_number") %>%
+  select(all_of(relevnt_cols))
+for (col in flip_list) {
+  df123 <- flip_scale(df123, col)
+}
+for (col in seq_len(ncol(df123))) {
+  max_val <- floor(max(df123[col], na.rm = TRUE))
+  for (row in seq_len(nrow(df123))) {
+    if (is.na(df123[row, col])) { next }
+    if (1 <= df123[row, col]) {
+      if (df123[row, col] <= max_val) {
+        df123[row, col] <- round(df123[row, col])
+      }
+      else {
+        df123[row, col] <- max_val
+      }
+    }
+    else {
+      df123[row, col] <- 1
+    }
+  }
+}
+for (row in seq_len(nrow(df123))){
+  if (df123[row, "B.HELP.MENTAL"] == 3){
+    df123[row, "B.HELP.MENTAL"] <- 1
+    next
+    }
+  if (df123[row, "B.HELP.MENTAL"] == 2){
+    df123[row, "B.HELP.MENTAL"] <- 3
+    next
+  }
+  if (df123[row, "B.HELP.MENTAL"] == 1){
+    df123[row, "B.HELP.MENTAL"] <- 2
+  }
+}
+```
+
+# Statistics
+
+```{r summary}
+summary(df123 %>% select(c('B.HELP.MENTAL', 'T3army_fullservice', 'T3civilserv_full',
+                           'B.SUPPORT_4','B.SUPPORT_6', 'FamilyTrust','T3_10.20')))
+```
+
+# Visualizations
+
+```{r}
+class_of_qs <- read.csv(file = 'C:/Users/user/Downloads/Final_Project/Classification of questions.csv')
+ggplot(class_of_qs, aes(x = Class, fill = Sub_Class)) + geom_bar() +
+        theme(axis.text.x = element_text(hjust = 1, angle = 60),
+              legend.key.size = unit(2, 'cm'),
+              legend.key.height = unit(0.5, 'cm'),
+              legend.key.width = unit(0.5, 'cm'),
+              legend.title = element_text(size=8),
+              legend.text = element_text(size=6)) +
+        labs(title = "Division of the Questions",
+             subtitle = "overview of the types of questions",
+             x = "Type of Question",
+             y = "Number of Questions",
+             fill = "Sub-Class")
+```
+
+In the bar plot above, we can see the division of the relevant questions from the 3 questionnaires of the research. The questions are divided by types, such that each type includes sub-classes. The purpose of this visualization is to show what we can work with in terms of questions and data as well as to add to the statistics.
+
+
+```{r}
+gdf <- df123 %>% select(c('FamilyTrust','T3_10.20')) %>% drop_na() %>%
+group_by(FamilyTrust, T3_10.20) %>%
+        mutate(amount = n())
+ggplot(gdf, aes(x = haven::as_factor(FamilyTrust), y = haven::as_factor(T3_10.20),
+                size = amount, color = amount)) + geom_point() + theme_minimal() +
+        theme(legend.key.size = unit(2, 'cm'),
+              legend.key.height = unit(0.5, 'cm'),
+              legend.key.width = unit(0.5, 'cm'),
+              legend.title = element_text(size=8),
+              legend.text = element_text(size=6),
+              panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+              panel.background = element_blank(), axis.line = element_line(colour = "black")) +
+        labs(title = "The Development in the Relationship with the Family",
+             subtitle = "relationship satisfaction today depending on trust with helping in the past",
+             x = "Family Trust with Helping",
+             y = "Relationship Satisfaction Today", size = "Teenagers", color = "Teenagers") +
+        scale_x_discrete(labels = c('not at all', 'slightly', 'moderately', 'significantly',
+                                    'absolutely')) +
+        scale_y_discrete(labels = c('no family', 'not satisfied at all', 'not so satisfied',
+                                    'satisfied', 'very satisfied'))
+```
+
+In the scatter plot above, we can see the relationship between the degree of the teenager's past trust in his family, and the degree of satisfaction from his relationship with them today. We can infer from the visualization that most of the teenagers have a strong connection with their family today, although a considerable amount of them had low trust in their family in the past.
+
+```{r}
+score_df <- df123  %>% select (c('B.SUPPORT_4', 'B.SUPPORT_6', 'B.HELP.MENTAL',
+                                 'T3army_fullservice', 'T3civilserv_full'))
+score_df[is.na(score_df)] <- 0
+score_df <- score_df %>% mutate(em_op_score = (1/3) * (B.SUPPORT_4 * 20 +
+        B.SUPPORT_6 * 20 + B.HELP.MENTAL * (100/3)), ar_ci_score =
+        T3army_fullservice + T3civilserv_full) %>% filter(ar_ci_score == 2)
+
+ggplot(score_df, aes(x = em_op_score, fill = ar_ci_score, color = "darkolivegreen3")) +
+        geom_density(alpha = 0.5, fill = "darkolivegreen3", color = "darkolivegreen4") +
+        theme_minimal() + scale_y_continuous(breaks = c(0.00, 0.01, 0.02, 0.03),
+                                             labels = c("0", "15", "30", "45")) +
+        labs(title = "Emotional Openness Corresponding to Completing Military or Civil Service",
+             x = "Emotional Openness Score",
+             y = "Number of Teenagers")
+```
+
+In the density plot above, we can see the relationship between the emotional openness score of the teenagers and whether they completed full military or civil service.
+We created emotional openness score for a general teenager, which is calculated by referencing the next three questions:
+1. To what extent do you feel there are people in your life right now who give you tips and suggestions when you approach them with a problem?
+2. To what extent do you feel there are people in your life right now who you can turn to when you want to talk about something that worries you or bothers you?
+3. After you left the boarding school, did you consult with any of the village staff about dealing with emotional difficulties (e.g., in the military and national service, adapting to new situations).
+
+The emotional openness score can get values from 24 to 100. 24 is the lowest score, that means the teenager most likely has difficulties with opening emotionally. 100 is the highest score, that means the teenager is emotionally open and does not mind requesting for help.
+
+We can see from the visualization that the more emotionally open the teenager is, the more likely he is to complete full military/civil service.
+
+
+## 4. Data analysis plan
+
+The explanatory variables are questions that measure the emotional openness of the teen and his will to receive external help, such as: B.SUPPORT, B.HELP.MENTAL, B.HELP.RELATIONS, B.HELP.NONPROFIT, B.LONELY, B.INTERNET.SUPPORT 3,4, SenseCont 1-6, FamilyTrust, PnimiaTrust, PnimiaSupp.
+
+the explained variables are questions that measure the development/personal advancement of the teen in life, such as: T3army_fullservice, T3civil_service, T3civilserv_full, T3_SRH, T3job_no, T3A8.wp.160 , T3T314.10, T3_10.20, T3_10.120, T3_10.460, T3_socialsupport.
+
+The methods we believe to be useful to answer our research question are making visualizations that show cause and effect. The final result will be composed of graphs that show regression of the development of the teen in a variety of aspects in life (like financially, health wise, socially, educationally etc.) as it is dependent on the causal variables, the ones which represent the openness and the help.
+For most of the graphs we will use a score as the independent variable. This score will be calculated by the different explanatory variables mentioned above, and it will signify the emotional openness of the teen and his will to receive external help as a whole. We will strive so that the results projected in the various visualizations will provide findings towards the correlation between the emotional openness and the help received to the development throughout life in general. Our theory is that the more the teen is open emotionally and/or is willing to receive external help, his development in the different aspects of life  would better compared to others who do not seek help and/or are not emotionally open.
+
+As a team of 3, we'll make sure to divide the work accordingly and cooperate properly. First, we'll go through the data and look for problematic properties of the dataset to try and fix/clean it. We'll come up with ideas for graphs which will aid us in showing the conclusions of our research question. We'll divide the work so that one member will be responsible for fixing and cleaning the data. We've run into numerous issues that needed our intervention, among them are:
+- Incoherent scales of the answers to certain questions, meaning that some questions had "I do not agree at all" as 1, while other questions had it as 5 so the whole scale is reversed, as such, fixing it is permanent for easy manipulation of the data.
+- Multiple rows with the same serial number, in the data there are rows that have answer values until a certain column and the rest of the values are NAs while the next row with the same serial number has NAs until that same column and the rest of the columns have answer values, meaning that combining them will result in one row which contains all the answers of the teen.
+- Selection of only the relevant columns to our research question and filtering out the rows of the people that didn't fill out the third questionnaire.
+- Adjusting the variables to their relevant type in terms of the way we'd want to manipulate the data
+
+The second member will be responsible for creating the visualizations and thinking of ways to construct them, so that they would easley and clearly convey the conclusions from our research. Since visualizations are essential for projecting the results of the research, it is of most importance to choose a fitting scheme of the graph as well as taking care of its aesthetics, adding suitable labels and informative text.
+
+The third member will be responsible for writing the body of the project. This includes the conclusions we arrived at, further explanation of the visualizations and writing a clear description of what was done in the project.
+
+We'll add that every part that was done by one of the project members, was done while consulting with the other members and making sure with the rest of the group that each part was done properly.
+
+## Appendix
+
+### Data README
+
+```{r include_data_readme, comment=''}
+cat(readLines('C:/Users/user/Downloads/Final_Project/proj/data/README.rmd'), sep = '\n')
+```
+
+### Source code
+
+```{r, ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE}
+
+```

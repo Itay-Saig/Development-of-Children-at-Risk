@@ -1,0 +1,282 @@
+# SISE2601 Project data description
+================
+Team name: AH
+
+The existing questions in the dataset consist of 3 questionnaires.
+These three questionnaires occurred about two years apart and as stated examined the condition of
+the child / adolescent / adult during different times in his life.
+
+The questions described in this file are translated to english to ensure consistency and to resolve
+technical issues.
+
+1. During your last year in boarding school how many times have you seen at least one of your parents?
+The question is encoded in the data as ParentMeet.
+The answers to the question range from never or almost never to once every two weeks.
+
+2. During your last year in boarding school how many times have you been in telephone contact with
+at least one of the parents?
+The question is encoded in the data as ParentPhone.
+The answers range from never or almost never to two or three times a week.
+
+3. To what extent can you trust someone from your biological family (eg parents, siblings) when you
+need help or support?
+The question is encoded in the data as FamilyTrust.
+The answers range from not at all to very much.
+
+4. To what extent does someone in your biological family support you in your choices and decisions?
+The question is encoded in the data as FamilSupp.
+The answers range from not at all to very much.
+
+5. Apart from your parents, do you have a person older than you who influences you in a positive
+and meaningful way?
+The question is encoded in the data as Mentor.
+We will mark 1 for no and 2 for yes.
+
+6. How often are you in touch with him today approximately (e.g., meeting with him, talking on
+the phone, corresponding on WhatsApp)?
+The question is encoded in the data as MentorFreq.
+The answers range from never or almost never to two or three times a week.
+
+7. Do you have staff members at the boarding school who are significant to you
+(for example: social worker, instructor, coordinator)?
+The question is encoded in the data as FormalMentor.
+We will mark 1 for no and 2 for yes.
+
+8. To what extent can you trust someone from the boarding school staff when you need help or support?
+The question is encoded in the data as PnimiaTrust.
+The answers range from not at all to very much.
+
+9. To what extent do you have someone from the boarding school staff who supports you in your
+choices and decisions?
+The question is encoded in the data as PnimiaSupp.
+The answers range from not at all to very much.
+
+10. If you would like to consult or receive any help in the future after you leave the
+boarding school to what extent do you think you will turn to the boarding school?
+The question is encoded in the data as HelpSeekInten1.
+The answers range from not at all to very much.
+
+11. If you would like to consult or get any help in the future, to what extent do you think
+the boarding school can help you?
+The question is encoded in the data as HelpSeekInten2.
+The answers range from not at all to very much.
+
+12. How anxious are you to leave the boarding school and go on an independent life?
+The question is encoded in the data as V34.
+The answers range from very upset to very unconcerned about leaving the boarding school.
+
+13. To what extent do you agree with the following statements?
+
+The first statement is encoded in the data as SenseCont1.
+And the first statement is "what will happen to me in the future depends mainly on me".
+
+The second statement is encoded in the data as SenseCont2.
+And the second saying is "I can do almost anything I decide to do".
+
+The third statement is encoded in the data as SenseCont3.
+And the third saying is "Many times I feel like I can not deal with my problems in life".
+
+The fourth statement is encoded in the data as SenseCont4.
+And the fourth statement is "I have little control over what happens to me in life".
+
+The fifth statement is encoded in the data as SenseCont5.
+And the fifth saying is "there is no way I can solve most of the problems that are bothering
+me in life".
+
+The sixth statement is encoded in the data as SenseCont6.
+And the sixth saying is "I can only slightly change the things that are important to me in life".
+
+14.
+For the following statements there is the question: To what extent do you feel there are people
+in your life right now who...
+It is encoded as B.SUPPORT.
+The statements come to indicate how much the person feels that he is alone in front of the world
+or that there are people around him that he is willing to help, and they can help him.
+
+First statement - encoded as B.SUPPORT_1.
+Giving you or helping you get things you need (e.g., clothes, money, or anything else)?
+
+Second statement - encoded as B.SUPPORT_2.
+Helping you with things you need to do (for example, taking or accompanying you to places,
+helping with military / national service things, with arrangements, etc.)?
+
+Third statement - encoded as B.SUPPORT_3.
+Make you feel that they love you and that they care about you?
+
+Fourth statement - encoded as B.SUPPORT_4.
+Are you given tips and suggestions that help you, when you approach them with a problem?
+
+Fifth statement - encoded as B.SUPPORT_5.
+People you enjoy talking to?
+Statement Friday - encoded as B.SUPPORT_6.
+People you turn to when you want to talk about something that is important to you
+(for example, about something that worries you or bothers you)?
+
+15. How often since you left the village until today are you in contact with the alumni coordinator
+or someone from the village staff in any form (or your initiative or the village initiative)
+for example: face to face, telephone contact, messages / WhatsApp) ...
+It is encoded as B.CONTACT.DURATION.
+The answers range from not at all to occasionally in two weeks or more.
+
+16. Dealing with emotional difficulties (e.g., in the military and national service,
+adapting to new situations
+It is encoded as B.HELP.MENTAL.
+The answers are:
+1. I consulted
+2. I did not consult because I did not have to
+3. I did not consult even though I had to.
+And the next question: to what extent did it help you?
+It is encoded as B.HELP.MENTAL.DEGREE.
+The answers range from not at all to very much.
+
+
+17. Connecting or strengthening the bond with your family members or other significant other people
+It is encoded as B.HELP.RELATIONS.
+The answers are:
+1. I consulted
+2. I did not consult because I did not have to
+3. I did not consult even though I had to.
+And the next question: to what extent did it help you?
+It is encoded as B.HELP.RELATIONS.DEGREE.
+The answers range from not at all to very much.
+
+18. Connection with other factors that help young people in various fields
+(e.g. associations / social workers)
+It is encoded as B.HELP.NONPROFIT.
+The answers are:
+1. I consulted
+2. I did not consult because I did not have to
+3. I did not consult even though I had to.
+And the next question: to what extent did it help you?
+It is encoded as B.HELP.NONPROFIT.DEGREE.
+The answers range from not at all to very much.
+
+22. I meet people and make friendships to the extent that suits me in a setting.
+It is encoded as B.MAIN.OCCUPATION_1.
+The answers range from not at all to very much.
+
+23. I have a number of good friends or acquaintances in the framework with whom
+I can talk about any problems I may have.
+It is encoded as B.MAIN.OCCUPATION_8.
+The answers range from not at all to very much.
+
+24. I am satisfied with my social life in the framework.
+It is encoded as B.MAIN.OCCUPATION_9.
+The answers range from not at all to very much.
+
+25. There is always someone I can talk to about my day-to-day problems or anything
+else that bothers me.
+It is encoded as B.LONELY_1.
+The answers range from not at all to very much.
+
+26. There are a lot of people I trust completely.
+It is encoded as B.LONELY_2.
+The answers range from not at all to very much.
+
+27. I think my circle of friends and acquaintances is limited.
+It is encoded as B.LONELY_3.
+The answers range from not at all to very much.
+
+28. There are enough people I feel close to.
+It is encoded as B.LONELY_4.
+The answers range from not at all to very much.
+
+29. I am looking to belong to a group or online forum with a similar problem,
+to learn from them what to do.
+It is encoded as B.INTERNET.SUPPORT_3.
+The answers range from not usually doing so to doing so to a very large extent.
+
+30. I try to get help, support and understanding from someone professional,
+through online help and support sites.
+It is encoded as B.INTERNET.SUPPORT_4.
+The answers range from not usually doing so to doing so to a very large extent.
+
+31. In general, how would you define your state of health?
+It is encoded as T3_SRH.
+The answers range from not good at all to very good.
+
+32. How many places do you work?
+It is encoded as T3job_no.
+The answer is a digit.
+
+33. Who pays your wages in your main workplace?
+It is encoded as T3A8.wp.160.
+The answers are 1. workplace 2. manpower company 3. other.
+
+34. In the last month, what was your gross income from all your jobs
+(including wages and income from a business)?
+It is encoded as T314.10.
+There are 11 answers that are categorized according to 1 to 11 and indicate different wage levels.
+
+35. Excellent list of ten difficult events. For each of them the adult should indicate
+whether he passed it in his childhood (up to the age of 18).
+The question is encoded as T3Adverse_Events.
+For each of the 10 sections it is required to indicate no = 1 / yes = 2.
+
+36. An excellent list of ten more difficult events related to the emotional aspect.
+For each of them the adult should indicate whether he went through it as a child
+(up to the age of 18).
+The question is encoded as T3_ACE.
+For each of the 10 sections it is required to indicate no = 1 / yes = 2.
+
+37. What type of apartment do you live in?
+It is encoded as T3housing_status.
+The answers are a rented apartment / sheltered housing / an apartment owned by others and more.
+
+38. Have you served full military service?
+It is encoded as T3army_fullservice.
+The answers are yes = 1 / no = 2.
+
+39. Did you do national service?
+It is encoded as T3civil_service.
+The answers are yes = 1 / no = 2.
+
+40. Have you served full national service?
+It is encoded as T3civilserv_full.
+The answers are yes = 1 / no = 2.
+
+41. Of all the areas I mentioned in which areas would you be currently interested in assistance,
+advice or guidance?
+One example: "Studies and Higher Education".
+It is encoded as T3helpneeded.
+There are 9 sections that should be marked / not marked V if advice in the
+relevant fields is desired.
+
+42. Now I will ask you about your relationship with family and friends,
+how satisfied are you with your relationship with your family?
+It is encoded as T3_10.20.
+The answers range from not at all satisfied to very satisfied.
+
+43. Do you have friends you talk to on the phone? Includes a call on a zoom or any app,
+not including messages and text messages.
+It is encoded as T3_10.120.
+The answers are yes = 1 / no = 2.
+
+44. Excellence 4 activities and asked how many times you have participated in these
+activities in the past year.
+It is encoded as T3_10.460.
+The answers are 1. not at all 2. 1-9 times 3. 10 times and more.
+
+45. The question is: To what extent do you feel there are people in your life right now who:
+And there are 6 statements on the subject.
+One for example: "Giving you or helping you get things you need
+for example: clothes, money or anything else".
+It is encoded as T3_socialsupport.
+The answers range from not at all (= 1) to very much (= 5).
+
+46. Are you successful or those who share with you in the household to cover all your
+monthly expenses for food for electricity, telephone and the like.
+It is encoded as T3_14.80.
+The answers range from not at all to without any difficulty.
+
+47. There are 7 statements about a person's satisfaction from his current point in his life.
+One example: "I'm doing well in life".
+It is encoded as T3_life_satisfaction.
+The answers range from never (= 1) to almost always (= 4).
+
+48. There are 16 statements about a person's self-esteem regarding what he can do today
+in life independently.
+One example: "Looking for a job?".
+It is encoded as T3_skills.
+The answers range from insuring not (= 1) to insuring yes (= 4).
+
